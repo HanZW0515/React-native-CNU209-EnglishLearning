@@ -116,7 +116,7 @@ var test2 = React.createClass({
         };
     },
     componentDidMount: function() {
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.html?content='+ this.state.word1;
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.action?content='+ this.state.word1;
         this.getDateFromServe(hh,1);
         if(!this.state.gold)
         {
@@ -197,7 +197,7 @@ var test2 = React.createClass({
 
     _wrong(){
         whoosh.stop();
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.html?UserId=2141002035&TestKnowledgeId=' + this.state.word + '&TestType=2&TestAspect=2&TestDifficulty='
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.action?UserId=2141002035&TestKnowledgeId=' + this.state.word + '&TestType=2&TestAspect=2&TestDifficulty='
             + this.state.difficulty + '&Pass=0&tempcoin=' + this.state.gold
         fetch(hh)
             .then((response) => response.text())
@@ -250,7 +250,7 @@ var test2 = React.createClass({
 
     _right(){
         whoosh.stop();
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.html?UserId=2141002035&TestKnowledgeId=' + this.state.word + '&TestType=2&TestAspect=2&TestDifficulty='
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.action?UserId=2141002035&TestKnowledgeId=' + this.state.word + '&TestType=2&TestAspect=2&TestDifficulty='
             + this.state.difficulty + '&Pass=1&tempcoin=' + this.state.gold
         fetch(hh)
             .then((response) => response.text())

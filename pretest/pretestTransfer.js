@@ -48,7 +48,7 @@ var pretestTransfer = React.createClass({
 
     componentDidMount: function() {
 
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/wordAndSentencesByGrade.html?grade=' + this.state.statelevel;
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/wordAndSentencesByGrade.action?grade=' + this.state.statelevel;
         this.setState({
             user: this.props.paramsUser
         });

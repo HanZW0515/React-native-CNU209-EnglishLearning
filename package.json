@@ -6,13 +6,18 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "react": "^0.14.2",
-    "react-native": "^0.25.1",
+    "react": "^15.2.0",
+    "react-native": "^0.30.0",
     "react-native-image-picker": "^0.18.15",
     "react-native-modalbox": "^1.2.8",
-    "react-native-simpledialog-android": "^1.0.2",
+    "react-native-simpledialog-android": "^1.0.7",
     "react-native-sound": "^0.7.3",
     "react-native-video": "^0.7.1",
     "react-native-webview-android": "^1.0.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "webpack": "^1.13.1"
   }
 }

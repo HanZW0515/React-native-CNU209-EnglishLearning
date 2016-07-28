@@ -6,18 +6,15 @@
 
 
 'use strict';
-var preTestQuestion2 = require('./preTestQuestion2');
 
-var React = require('react-native');
-var {
-    Image,
+import React, { Component } from 'react';
+import {
     Text,
+    Image,
     View,
     StyleSheet,
     TouchableHighlight
-    } = React;
-
-
+} from 'react-native';
 //主视图
 var test = React.createClass({
     getInitialState: function() {
@@ -51,8 +48,8 @@ var test = React.createClass({
         const {navigator} = this.props;
         if (navigator) {
             navigator.push({
-                name: 'preTestQuestion2',
-                component: require('./preTestQuestion2'),
+                name: 'new_preTest1',
+                component: require('./new_preTest1'),
 
                 //这里多出了一个 params 其实来自于<Navigator 里的一个方法的参数...
                 params: {

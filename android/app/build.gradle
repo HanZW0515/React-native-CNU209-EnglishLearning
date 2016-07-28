@@ -55,7 +55,13 @@ import com.android.build.OutputFile
  *   // date; if you have any other folders that you want to ignore for performance reasons (gradle
  *   // indexes the entire tree), add them here. Alternatively, if you have JS files in android/
  *   // for example, you might want to remove it from here.
- *   inputExcludes: ["android/**", "ios/**"]
+ *   inputExcludes: ["android/**", "ios/**"],
+ *
+ *   // override which node gets called and with what additional arguments
+ *   nodeExecutableAndArgs: ["node"]
+ *
+ *   // supply additional arguments to the packager
+ *   extraPackagerArgs: []
  * ]
  */
 
@@ -120,20 +126,21 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.facebook.react:react-native:+'
-    // From node_modules
-    compile project(':RNSound')
-    compile project(':RNSimpleAlertDialogModule')
-    compile project(':RCTVideo')
-    compile project(':RNWebView')
-    compile project(':react-native-image-picker')
-    compile project(':RCTVideo')
-    compile project(':nativemodule')
-    compile project(':cordovaplugin')
-    compile project(':react-native-record-sound')
-    compile project(':VoiceModule')
+    compile fileTree(dir: "libs", include: ["*.jar"])
+    compile "com.android.support:appcompat-v7:23.0.1"
+    compile "com.facebook.react:react-native:+"  // From node_modules
+        compile project(':RNSound')
+        compile project(':RNSimpleAlertDialogModule')
+        compile project(':RCTVideo')
+        compile project(':RNWebView')
+        compile project(':RCTVideo')
+        compile project(':cordovaplugin')
+        compile project(':react-native-record-sound')
+        compile project(':RNAudioRecorder')
+        compile project(':react-native-voise')
+        compile files('F:/hello/node_modules/react-native-voise/android/src/main/libs/Baidu-SpeechRecognitionUI-SDK-Android-1.6.2.jar')
+        compile files('F:/hello/node_modules/react-native-voise/android/src/main/libs/galaxy.jar')
+        compile files('F:/hello/node_modules/react-native-voise/android/src/main/libs/VoiceRecognition-1.6.2.jar')
 }
 
 // Run this once to be able to run the application with BUCK

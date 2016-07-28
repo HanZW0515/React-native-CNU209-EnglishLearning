@@ -57,7 +57,7 @@ var test6 = React.createClass({
     componentDidMount: function() {
         //这里获取从Login传递过来的参数: user
 
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.html?content=' + this.state.word;
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.action?content=' + this.state.word;
         this.getDateFromServe(hh,1);
         this.setState({
             user: this.props.paramsUser
@@ -112,7 +112,7 @@ var test6 = React.createClass({
     },
 
     _wrong(){
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.html?UserId=2141002035&TestKnowledgeId=' + this.state.word + '&TestType=1&TestAspect=3&TestDifficulty='
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.action?UserId=2141002035&TestKnowledgeId=' + this.state.word + '&TestType=1&TestAspect=3&TestDifficulty='
             + this.state.difficulty + '&Pass=0&tempcoin=' + this.state.gold
         fetch(hh)
             .then((response) => response.text())
@@ -162,7 +162,7 @@ var test6 = React.createClass({
     },
 
     _right(){
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.html?UserId=2141002035&TestKnowledgeId=' + this.state.word + '&TestType=1&TestAspect=3&TestDifficulty='
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.action?UserId=2141002035&TestKnowledgeId=' + this.state.word + '&TestType=1&TestAspect=3&TestDifficulty='
             + this.state.difficulty + '&Pass=1&tempcoin=' + this.state.gold
         fetch(hh)
             .then((response) => response.text())

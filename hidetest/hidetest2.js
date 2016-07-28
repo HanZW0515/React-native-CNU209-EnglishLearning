@@ -217,7 +217,7 @@ var hidetest2 = React.createClass({
 
         if(this.state.result1==1&&this.state.result2==1&&this.state.result3==1&&this.state.result4==1)
         {
-            var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/hideGrade.html?userName=123&num=2';
+            var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/hideGrade.action?userName=123&num=2';
             fetch(hh)
                 .then((response) => response.text())
                 .then(responseText => {

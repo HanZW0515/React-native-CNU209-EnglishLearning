@@ -64,7 +64,7 @@ var preTestResult = React.createClass({
     },
 
     onGoPressed(){
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/coinAndScene.html?userName=123&coin='+ this.state.gold + '&scene='+this.state.level;
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/coinAndScene.action?userName=123&coin='+ this.state.gold + '&scene='+this.state.level;
         fetch(hh)
             .then((response) => response.text())
             .then(responseText => {

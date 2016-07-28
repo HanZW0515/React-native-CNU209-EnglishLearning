@@ -28,7 +28,7 @@ var sentencetest1 = React.createClass({
 
     componentDidMount: function() {
         var word111 = 'love'
-        var hh = 'http://172.19.203.151:8080/iqasweb//mobile/search/sentence.html?text=Execute,Where are you from,ok?';
+        var hh = 'http://172.19.203.151:8080/iqasweb//mobile/search/sentence.action?text=Execute,Where are you from,ok?';
         this.getDateFromServe(hh,1);
         if(!this.state.gold)
         {

@@ -5,16 +5,14 @@
  */
 
 'use strict';
-var test1 = require('./../test2/test1');
-
-var React = require('react-native');
-var {
-    Image,
+import React, { Component } from 'react';
+import {
     Text,
+    Image,
     View,
     StyleSheet,
     TouchableHighlight
-    } = React;
+} from 'react-native';
 
 
 //主视图
@@ -57,6 +55,13 @@ var preTestResult = React.createClass({
                 level:4,
             })
         }
+        if(this.state.statelevel==5)
+        {
+            this.setState({
+                gold:200,
+                level:5,
+            })
+        }
 
         this.setState({
             user: this.props.paramsUser
@@ -64,7 +69,7 @@ var preTestResult = React.createClass({
     },
 
     onGoPressed(){
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/coinAndScene.html?userName=123&coin='+ this.state.gold + '&scene='+this.state.level;
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/coinAndScene.action?userName=123&coin='+ this.state.gold + '&scene='+this.state.level;
         fetch(hh)
             .then((response) => response.text())
             .then(responseText => {

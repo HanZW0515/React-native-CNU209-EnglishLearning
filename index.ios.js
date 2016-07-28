@@ -3,51 +3,32 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
+import React, { Component } from 'react';
+import {
+    AppRegistry,
+    Navigator,
+} from 'react-native';
 
-var React = require('react-native');
-var {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-} = React;
+import Home from '../react-native-hzw/hzwProject/os_test/os_test_1'
 
-var hello = React.createClass({
-  render: function() {
+var hello = React.createClass ({
+  render : function () {
+    var defaultName = 'ios_test';
+    var defaultComponent =  Home;
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+        <Navigator
+            initialRoute={{name: defaultName, component: defaultComponent}}
+            configureScene={ () => {
+                return Navigator.SceneConfigs.VerticalDownSwipeJump;
+                }}
+            renderScene={(route, navigator) => {
+                let Component = route.component;
+                if(route.component) {
+                      return<Component {...route.params } navigator={navigator } />
+                }
+                }}/>
     );
   }
 });
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('hello', () => hello);
+AppRegistry.registerComponent('hello', () =>hello);

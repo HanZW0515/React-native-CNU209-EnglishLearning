@@ -144,7 +144,7 @@ var preTestQuestion3 = React.createClass({
         }
         else
         {
-            var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.html?content=' + this.state.word;
+            var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.action?content=' + this.state.word;
         }
 
         if(this.props.statelevel)

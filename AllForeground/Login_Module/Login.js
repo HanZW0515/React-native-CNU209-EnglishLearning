@@ -169,7 +169,7 @@ var Login = React.createClass({
 
     onLoginPressed() {
 
-        var hh = 'http://192.168.0.117:8088/iqasweb/mobile/user/login.html?' + 'password=' + this.state.password + '&' + 'userName=' + this.state.username;
+        var hh = 'http://192.168.0.117:8088/iqasweb/mobile/user/login.action?' + 'password=' + this.state.password + '&' + 'userName=' + this.state.username;
 
         fetch(hh)
             .then((response) => response.text())

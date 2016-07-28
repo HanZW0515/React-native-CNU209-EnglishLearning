@@ -9,9 +9,10 @@ import {
     NativeModules,
 } from 'react-native';
 
-var record = require('react-native-record-sound');
-import SpeechAndroid from 'react-native-android-voice';
+
 var ToastAndroid = NativeModules.ToastAndroid;
+import Record from 'react-native-record-sound';
+//import {AudioRecorder, AudioUtils} from 'react-native-audio';
 
 var try1 = React.createClass ({
 
@@ -22,37 +23,83 @@ var try1 = React.createClass ({
         };
     },
 
-    async takePicture() {
-        this.setState({
-            result:'aaaaa',
-        })
-        try{
-            //More Locales will be available upon release.
-            var spokenText = await SpeechAndroid.startSpeech("Speak yo", SpeechAndroid.GERMAN);
-            ToastAndroid.show(spokenText , ToastAndroid.LONG);
-        }catch(error){
-            switch(error){
-                case SpeechAndroid.E_VOICE_CANCELLED:
-                    ToastAndroid.show("Voice Recognizer cancelled" , ToastAndroid.LONG);
-                    break;
-                case SpeechAndroid.E_NO_MATCH:
-                    ToastAndroid.show("No match for what you said" , ToastAndroid.LONG);
-                    break;
-                case SpeechAndroid.E_SERVER_ERROR:
-                    ToastAndroid.show("Google Server Error" , ToastAndroid.LONG);
-                    break;
-                /*And more errors that will be documented on Docs upon release*/
-            }
-        }
-        this.setState({
-            result:spokenText,
-        })
+    //async takePicture() {
+    //    try{
+    //        //More Locales will be available upon release.
+    //        var spokenText = await SpeechAndroid.startSpeech("Speak yo", SpeechAndroid.ENGLISH);
+    //        this.setState({
+    //            result:spokenText
+    //        })
+    //    }catch(error){
+    //        switch(error){
+    //            case SpeechAndroid.E_VOICE_CANCELLED:
+    //                this.setState({
+    //                    result:'Voice Recognizer cancelled'
+    //                })
+    //                break;
+    //            case SpeechAndroid.E_NO_MATCH:
+    //                this.setState({
+    //                    result:'No match for what you said'
+    //                })
+    //                break;
+    //            case SpeechAndroid.E_SERVER_ERROR:
+    //                this.setState({
+    //                    result:'Google Server Error'
+    //                })
+    //                break;
+    //            /*And more errors that will be documented on Docs upon release*/
+    //        }
+    //    }
+    //    this.setState({
+    //        result:spokenText,
+    //    })
+    //},
+    //
+    _tts(){
+
+//import the module
+        let AudioRecorder = require('react-native-audio-android');
+        let audioRecorder = new AudioRecorder();
+
+//to start recording audio:
+        audioRecorder.startAudioRecording((success) => {
+            console.log(success);
+        }, (error) => {
+            console.log(error);
+        });
+
+
+        //to stop recording audio:
+
+        audioRecorder.stopAudioRecording((result) => console.log(result));
     },
+    //
+    //recording(){
+    //    var path = 'D:/'
+    //    if (isRecording === false)
+    //        Record.startRecord(path + 'sound.mp4');
+    //    else
+    //        Record.stopRecord();
+    //    isRecording = !isRecording;
+    //},
+    //
+    //record(){
+    //    let audioRecorder = new AudioRecorder();
+    //    audioRecorder.startAudioRecording((success) => {
+    //        this.setState({
+    //            result:success
+    //        })
+    //    }, (error) => {
+    //        this.setState({
+    //            result:error
+    //        })
+    //    });
+    //},
 
     render : function () {
         return (
             <View style={styles.container}>
-                <Text style = {styles.textsty} onPress={()=>this.takePicture()}>start recording</Text>
+                <Text style = {styles.textsty} onPress={()=>this._tts()}>start recording</Text>
                 <Text style = {styles.textsty}>stop recording</Text>
                 <Text style = {styles.textsty}>{this.state.result}</Text>
             </View>

@@ -230,7 +230,7 @@ var Register = React.createClass ({
         this.setState({
             message:querystring,
         })
-        return 'http://192.168.0.109:8088/iqasweb/mobile/user/register.html?'+
+        return 'http://192.168.0.109:8088/iqasweb/mobile/user/register.action?'+
         querystring;
 
     },

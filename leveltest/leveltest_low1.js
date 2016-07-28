@@ -94,7 +94,7 @@ var leveltestlow1 = React.createClass({
 
     //应该为录音模块，暂未完成，只实现跳转功能
     _choose() {
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/finalScene.html?userName=123&num=1';
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/finalScene.action?userName=123&num=1';
         fetch(hh)
             .then((response) => response.text())
             .then(responseText => {

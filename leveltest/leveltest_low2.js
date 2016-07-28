@@ -52,7 +52,7 @@ var leveltestlow2 = React.createClass({
     componentDidMount: function() {
         //这里获取从Login传递过来的参数: user
 
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.html?content=' + this.state.word;
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.action?content=' + this.state.word;
         this.getDateFromServe(hh,1);
         this.setState({
             user: this.props.paramsUser
@@ -108,7 +108,7 @@ var leveltestlow2 = React.createClass({
 
     //应该为录音模块，暂未完成，只实现跳转功能
     submitchoice() {
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/finalScene.html?userName=123&num=1';
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/finalScene.action?userName=123&num=1';
         fetch(hh)
             .then((response) => response.text())
             .then(responseText => {

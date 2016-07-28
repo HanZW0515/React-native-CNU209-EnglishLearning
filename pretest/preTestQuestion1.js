@@ -175,7 +175,7 @@ var preTestQuestion1 = React.createClass({
         }
 
 
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.html?content=' + this.state.word;
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.action?content=' + this.state.word;
         this.getDateFromServe(hh,1);
         this.setState({
             user: this.props.paramsUser

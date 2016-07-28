@@ -162,7 +162,7 @@ var Login = React.createClass({
      /* this.setState({
             IsLogin:true
         }); */
-        /*   var hh='http://192.168.0.121:8088/iqasweb/mobile/user/login.html?' + 'password='+ this.state.password +'&'+ 'username=' +this.state.username;
+        /*   var hh='http://192.168.0.121:8088/iqasweb/mobile/user/login.action?' + 'password='+ this.state.password +'&'+ 'username=' +this.state.username;
 
          fetch(hh)
          .then((response) => response.text())

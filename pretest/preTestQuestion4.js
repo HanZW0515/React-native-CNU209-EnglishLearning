@@ -78,15 +78,15 @@ var styles= StyleSheet.create({
 
     inputsty:{
         height:50,
-        width:500,
+        width:125,
         borderColor: 'gray',
         borderWidth: 10,
         fontSize: 30,
         alignItems: 'center',
-        marginTop:80,
+        marginTop:10,
     },
     textsty3: {
-        fontSize: 40,
+        fontSize: 30,
         margin:30,
         textAlign: 'center',
         fontFamily: 'Cochin',
@@ -107,8 +107,11 @@ var preTestQuestion4 = React.createClass({
         return {
             user: [],
             //word:this.props.word,
-            sentence:'What is your name ?',
-            ans: 'null',
+            question:null,
+            newquestion:null,
+            newwhat:null,
+            ans: null,
+            what:'What',
 
             score:100,
 
@@ -119,22 +122,27 @@ var preTestQuestion4 = React.createClass({
             wrongnum:this.props.wrongnum,
 
             result1:0,           //选择第一张图片，标志位变动，0为初始状态，显示选项图片，1为正确，显示对勾图片，2位错误显示叉子图片
+            flag:0,
 
         };
     },
 
     componentDidMount: function() {
         //这里获取从Login传递过来的参数: user
-        if(!this.state.sentence)
-        {
-            this.setState({
-                sentence:'What is your name',
-            })
-        }
-        else
-        {
-            var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/SentencesByGrade.html?grade=4';
-        }
+        //if(!this.state.sentence)
+        //{
+        //    this.setState({
+        //                    question:'What is your name ?',
+        //newquestion:'is your name ?',
+        //    newwhat:'What',
+        //    ans: 'My name is Jess',
+        //    what:'What',
+        //    })
+        //}
+        //else
+        //{
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/SentencesByGrade.action?grade=4';
+        //}
 
         if(this.props.statelevel)
         {
@@ -190,9 +198,17 @@ var preTestQuestion4 = React.createClass({
     _handleResponse1(responseText) {
         //获取数据
         var jonstr = JSON.parse(responseText);
-        var sentence = jonstr.result.data[0].Sentences;
+        var sentence = jonstr.result.data[0].Answers;
+        var question = jonstr.result.data[0].Questions;
+
+        var temparr = question.split(" ");
+        var newstr=question.replace(temparr[0],"");
+
         this.setState({
-            sentence:sentence,
+            question:question,
+            newquestion:newstr,
+            newwhat:temparr,
+            ans: sentence,
         })
     },
 
@@ -203,9 +219,6 @@ var preTestQuestion4 = React.createClass({
         this.setState({
             score:score1,
         })
-        SimpleAlert.alert('你真棒！~','获得'+this.state.score+'枚金币',[
-            {type:SimpleAlert.POSITIVE_BUTTON,text:'OK!',onPress:()=>this._right()}
-        ])
     },
 
     //跳转到下一页
@@ -213,22 +226,7 @@ var preTestQuestion4 = React.createClass({
         if(this.state.flag==0) {
             switch (num) {
                 case 1:  //点击点一个图片
-                    var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/simanswer.html?question=' + this.state.sentence;
-                    fetch(hh)
-                        .then((response) => response.text())
-                        .then(responseText => {
-                            switch (id) {
-                                case 1:
-                                    this._handleResponse2(responseText);
-                                    break;
-                            }
-                        })
-                        .catch((error) => {
-                            this.setState({
-                                Message: "捕获到错误",
-                            })
-                        });
-                    if (this.state.score >= 0.8) {
+                    if (this.state.what == this.state.newwhat) {
                         this.setState({
                             result1: 1,
                             rightnum: this.state.rightnum + 1,
@@ -274,7 +272,6 @@ var preTestQuestion4 = React.createClass({
                     }
                 }
             }
-            ;
         }
     },
 
@@ -286,22 +283,23 @@ var preTestQuestion4 = React.createClass({
                 <View style={styles.content}>
                     <Image style={{height: 706}} resizeMode='cover' source={require('./../image/preTest/pretest_background.png') }>
 
-                        <Text style = {styles.topictext}>你能根据我的答案给出问句么？</Text>
+                        <Text style = {styles.topictext}>你能根据我的答案给出疑问词么？（记得首字母大写哟）</Text>
 
                         <View style = {styles. piccontainer}>
 
                             <View style = {{alignItems: 'center', justifyContent: 'center',flex:1,flexDirection:'row'}}>
                                  <TextInput
                                  style={styles.inputsty}
-                                 onChangeText={(text) => this.setState({ans:text})}
+                                 onChangeText={(text) => this.setState({what:text})}
                                  onSubmitEditing={()=>this._choose(1)}
                                  />
+                                <Text style={styles.textsty3}>{this.state.newquestion}</Text>
                                 <Image source={{uri:'http://c.hiphotos.baidu.com/baike/w%3D268/sign=755993d41c4c510faec4e51c58592528/ac345982b2b7d0a2fee94981cdef76094b369a8e.jpg'}} style={{height:100,width:100}}/>
                             </View>
 
                             <View style = {{alignItems: 'center',justifyContent: 'center',flex:1,flexDirection:'row'}}>
                                 <Image source={require('./../image/test/peal.png')} style={{height:100,width:100}}/>
-                                <Text style={styles.textsty3}>{this.state.sentence}</Text>
+                                <Text style={styles.textsty3}>{this.state.ans}</Text>
                             </View>
 
                         </View>

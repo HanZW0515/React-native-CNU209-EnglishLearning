@@ -51,14 +51,14 @@ var transfer = React.createClass({
             user: this.props.paramsUser
         });
 
-        var hh = 'http://172.19.203.79:8080/iqasweb/mobile/pass/listTestWordattribute.html?num=1' ;
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listTestWordattribute.action?num=1' ;
         if(this.state.statequestion==2)
         {
-            var hh ='http://172.19.203.79:8080/iqasweb/mobile/pass/listTestWordattribute.html?num=2'
+            var hh ='http://172.19.203.116:8080/iqasweb/mobile/pass/listTestWordattribute.action?num=2'
         }
         if(this.state.statequestion==3)
         {
-            var hh ='http://172.19.203.79:8080/iqasweb/mobile/pass/listTestWordattribute.html?num=3'
+            var hh ='http://172.19.203.116:8080/iqasweb/mobile/pass/listTestWordattribute.action?num=3'
         }
         if(this.state.statequestion==4)
         {

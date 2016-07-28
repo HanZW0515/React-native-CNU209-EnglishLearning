@@ -70,8 +70,8 @@ var test11 = React.createClass({
     },
 
     componentDidMount: function() {
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.html?content='+ this.state.word;
-        // var hh = 'http://172.19.203.115:8080/iqasweb/mobile/pass/list.html?content=love';
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.action?content='+ this.state.word;
+        // var hh = 'http://172.19.203.115:8080/iqasweb/mobile/pass/list.action?content=love';
         this.getDateFromServe(hh,1);
         if(!this.state.gold)           //第一次进入这个界面的时候，gold没有数据，需要定位3
         {
@@ -145,7 +145,7 @@ var test11 = React.createClass({
     },
 
     _wrong(){
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.html?UserId=2141002035&TestKnowledgeId='
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.action?UserId=2141002035&TestKnowledgeId='
             + this.state.word + '&TestType=2&TestAspect=1&TestDifficulty='
             + this.state.difficulty + '&Pass=0&tempcoin=' + this.state.gold
         fetch(hh)
@@ -198,7 +198,7 @@ var test11 = React.createClass({
     },
 
     _right(){
-        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.html?UserId=2141002035&TestKnowledgeId=' + this.state.word + '&TestType=2&TestAspect=1&TestDifficulty='
+        var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/middletest.action?UserId=2141002035&TestKnowledgeId=' + this.state.word + '&TestType=2&TestAspect=1&TestDifficulty='
             + this.state.difficulty + '&Pass=1&tempcoin=' + this.state.gold
         fetch(hh)
             .then((response) => response.text())

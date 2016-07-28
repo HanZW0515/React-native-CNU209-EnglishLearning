@@ -191,11 +191,11 @@ var preTestQuestion2 = React.createClass({
         //这里获取从Login传递过来的参数: user
         if(!this.state.word)
         {
-            var hh= 'http://172.19.203.116:8080/iqasweb/mobile/pass/list.html?content=love'
+            var hh= 'http://172.19.203.116:8080/iqasweb/mobile/pass/list.action?content=love'
         }
         else
         {
-            var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.html?content=' + this.state.word;
+            var hh = 'http://172.19.203.116:8080/iqasweb/mobile/pass/listWordResource.action?content=' + this.state.word;
         }
         if(this.props.statelevel)
         {
